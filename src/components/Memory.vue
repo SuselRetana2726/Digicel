@@ -129,7 +129,7 @@ export default {
           const { carta: primera } = this.primeraCarta;
           const { carta: segunda } = this.segundaCarta;
 
-          if (primera.valor != segunda.valor) {
+          if (primera.valor === segunda.valor) {
             primera.encontrada = true;
             segunda.encontrada = true;
           } else {

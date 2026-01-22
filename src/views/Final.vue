@@ -9,9 +9,9 @@
         <span>00:{{ tiempoFormateado }}</span>
       </div>
       <div class="cuadro-texto">
-        Busca un comercial de <br>
-        Digicel en sus redes <br>
-        sociales del 2024
+        Busca en tiktok alguien que<br>
+        hable sobre la publicidad<br>
+        de Digicel antigua
       </div>
       <div class="botones">
         <button class="btn btn-blanco" @click="ganasteM()">

@@ -13,11 +13,9 @@
 
       <div class="contenido-popup">
         <p>Te faltó muy poquito para completar el reto. </p>
-        <p class="lila">Pero no te preocupes...</p>
-        <p>¡podés intentarlo de nuevo!</p>
       </div>
 
-      <div class="contenido-popup" style="margin-top: 0vh !important; font-style: italic;">
+      <div class="contenido-popup" style="margin-top: 0vh !important;">
         <p class="resultado">
           <banner class="lila">Has encontrado </banner><strong>{{ parejas }}</strong><banner class="lila"> parejas</banner>
         </p>

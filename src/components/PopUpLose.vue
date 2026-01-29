@@ -17,6 +17,12 @@
         <p>¡podés intentarlo de nuevo!</p>
       </div>
 
+      <div class="contenido-popup" style="margin-top: 0vh !important; font-style: italic;">
+        <p class="resultado">
+          <banner class="lila">Has encontrado </banner><strong>{{ parejas }}</strong><banner class="lila"> parejas</banner>
+        </p>
+      </div>
+
       <div class="botones-popup">
         <button class="boton-iniciar" @click="iniciar">Reiniciar</button>
         <button class="boton-salir" @click="cerrar">Salir</button>
@@ -28,7 +34,11 @@
 <script>
 export default {
   props: {
-    visible: Boolean
+    visible: Boolean,
+    parejas: {
+      type: Number,
+      default: 0
+    }
   },
   emits: ['cerrar', 'iniciar'],
   methods: {

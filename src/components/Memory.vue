@@ -39,6 +39,7 @@
     <PopUpPerdiste
       :juego="juegoSeleccionado" 
       :visible="perdiste" 
+      :parejas="parejasEncontradas"
       @cerrar="salirPerdiste"
       @iniciar="reiniciarPerdiste"
     />
@@ -75,6 +76,7 @@ export default {
       mezclando: false,
       juegoSeleccionado: 'memoria',
       mostrarPopup: false,
+      parejasEncontradas: 0, 
     };
   },
   created() {
@@ -132,6 +134,7 @@ export default {
           if (primera.valor === segunda.valor) {
             primera.encontrada = true;
             segunda.encontrada = true;
+            this.parejasEncontradas++;
           } else {
             primera.volteada = false;
             segunda.volteada = false;
@@ -173,6 +176,7 @@ export default {
       this.tiempo = 60;
       this.ganaste = false;
       this.perdiste = false;
+      this.parejasEncontradas = 0;
       clearInterval(this.temporizador);
 
       this.mezclando = true;

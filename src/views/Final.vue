@@ -27,12 +27,13 @@
 
     <PopUpGanaste
       :visible="ganaste" 
-      @iniciar="aceptarGanaste"
+      @iniciar="aceptarGanaste"      
     />
     <PopUpPerdiste
       :visible="perdiste" 
       @cerrar="salirPerdiste"
       @iniciar="reiniciarPerdiste"
+      :parejas="this.parejas"
     />
   </div>
 
@@ -60,11 +61,12 @@ export default {
   data() {
     return {    
       tiempo: 60,
+      parejas: 14,
       temporizador: null,
       ganaste: false,
       perdiste: false,
       mostrarPopup: false,
-       mostrarFlash: true
+      mostrarFlash: true      
     };
   },
   mounted() {
@@ -80,8 +82,10 @@ export default {
     }
 
     const tiempoRuta = Number(this.$route.query.tiempo);
+    const parejasRuta = Number(this.$route.query.parejas);
 
     this.tiempo = tiempoRuta || 60;
+    this.parejas = parejasRuta || 14;
     this.reiniciarJuego();
   },
   methods: {
@@ -121,7 +125,10 @@ export default {
     },
     reiniciarJuego() {
       const tiempoRuta = Number(this.$route.query.tiempo);
+      const parejasRuta = Number(this.$route.query.parejas);
+
       this.tiempo = tiempoRuta || 60;
+      this.parejas = parejasRuta || 14;
       this.ganaste = false;
       this.perdiste = false;
       clearInterval(this.temporizador);

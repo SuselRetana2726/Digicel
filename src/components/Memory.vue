@@ -31,11 +31,6 @@
       </div>
     </div>
 
-    <PopUpGanaste
-      :juego="juegoSeleccionado" 
-      :visible="ganaste" 
-      @iniciar="aceptarGanaste"
-    />
     <PopUpPerdiste
       :juego="juegoSeleccionado" 
       :visible="perdiste" 
@@ -145,13 +140,14 @@ export default {
           this.bloqueo = false;
 
           if (this.cartas.every(c => c.encontrada)) {
-            const tiempo1 = this.tiempo;
+            const tiempo1 = this.tiempo <= 2 ? this.tiempo+1 : this.tiempo;
             clearInterval(this.temporizador);
              sessionStorage.setItem('juegoIniciado', 'true');
              this.$router.push({
               path: '/final',
               query: {
-                tiempo: tiempo1
+                tiempo: tiempo1,
+                parejas: this.parejasEncontradas
               }
             })
           }
@@ -160,6 +156,11 @@ export default {
     },
     iniciarTemporizador() {
       this.temporizador = setInterval(() => {
+        if (this.ganaste) {
+          clearInterval(this.temporizador);
+          return;
+        }
+
         if (this.tiempo > 0) {
           this.tiempo--;
         } else {
